@@ -1,0 +1,105 @@
+/* Comic Theme Admin Login CSS */
+@import url('https://fonts.googleapis.com/css2?family=Bangers&family=Comic+Neue:wght@400;700&display=swap');
+
+:root {
+  --comic-yellow: #FFD700;
+  --comic-red: #FF4136;
+  --comic-blue: #007BFF;
+  --comic-white: #FFFFFF;
+  --comic-black: #000000;
+  --comic-border: 3px solid #000000;
+  --comic-shadow: 4px 4px 0px 0px #000000;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Comic Neue', cursive;
+    background-color: var(--comic-yellow);
+    background-image: radial-gradient(#00000022 2px, transparent 2px);
+    background-size: 20px 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    margin: 0;
+    padding: 20px;
+}
+
+.login-container {
+    background-color: #fff;
+    padding: 30px;
+    border: var(--comic-border);
+    box-shadow: 10px 10px 0px black;
+    width: 100%;
+    max-width: 400px;
+    text-align: center;
+    border-radius: 0;
+}
+
+h1 {
+    margin-bottom: 25px;
+    font-size: 2.5rem;
+    color: var(--comic-black);
+    font-family: 'Bangers', cursive;
+    text-transform: uppercase;
+    text-shadow: 2px 2px 0px #fff;
+    letter-spacing: 1px;
+}
+
+input {
+    width: 100%;
+    padding: 15px;
+    margin: 10px 0 20px;
+    border: 2px solid black;
+    background: white;
+    color: black;
+    outline: none;
+    font-family: 'Comic Neue', cursive;
+    font-weight: bold;
+    font-size: 1.1rem;
+    box-shadow: 3px 3px 0px #ccc;
+    transition: all 0.2s;
+    border-radius: 0;
+}
+
+input:focus {
+    box-shadow: 4px 4px 0px black;
+    background: #fffbe6;
+}
+
+button {
+    width: 100%;
+    padding: 15px;
+    background-color: var(--comic-red);
+    border: 3px solid black;
+    color: white;
+    font-size: 1.5rem;
+    font-family: 'Bangers', cursive;
+    letter-spacing: 1px;
+    box-shadow: 5px 5px 0px black;
+    transition: all 0.2s;
+    text-transform: uppercase;
+    cursor: pointer;
+    border-radius: 0;
+}
+
+button:hover {
+    transform: translate(2px, 2px);
+    box-shadow: 2px 2px 0px black;
+    background-color: var(--comic-yellow);
+    color: black;
+}
+
+.error {
+    color: var(--comic-red);
+    font-weight: bold;
+    font-size: 1rem;
+    margin-top: 10px;
+    background: white;
+    padding: 5px;
+    border: 2px solid black;
+    display: inline-block;
+}

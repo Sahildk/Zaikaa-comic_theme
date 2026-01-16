@@ -1,0 +1,82 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pay Online</title>
+    <link rel="stylesheet" type="text/css" href="{% static 'css/pay_online.css' %}" />
+    <link rel="icon" href="{% static 'img/ecell-logo.png'%}" type="image/png">
+
+    <!-- <script src="{% static 'js/pay_online.js' %}" defer></script> -->
+
+    
+</head>
+<body>
+
+<div class="container">
+    <h2 class="name">Confirm Your Order</h2>
+    
+    <!-- User Details -->
+    <div class="order-details">
+        <h3>User Details</h3>
+        <p><strong>Name:</strong> {{ user_details.name }}</p>
+        <p><strong>Email:</strong> {{ user_details.email }}</p>
+        <p><strong>Phone:</strong> {{ user_details.phone }}</p>
+    </div>
+
+    <!-- Cart Items (from session) -->
+    <div class="cart-items">
+        <h3>Cart Items</h3>
+        <ul id="order-list">
+            {% for item in selected_items %}
+                <li class="order-item">
+                    <div>
+                        <p><strong>{{ item.item_name }}</strong></p>
+                        <p>Price: ₹{{ item.price }}</p>
+                        <p>Quantity: {{ item.quantity }}</p>  <!-- Directly fetch the quantity from session -->
+                    </div>
+                </li>
+            {% endfor %}
+        </ul>
+    </div>
+
+    <!-- Total Amount (from session) -->
+    <div class="payment-summary">
+        <h3 class="total-amount">Total Amount: ₹{{ total_amount }}</h3>
+    </div>
+
+    <!-- Razorpay Payment Button -->
+    <button id="pay-btn" class="pay-button" data-order-id="{{ razorpay_order_id }}">
+        Pay Online
+    </button>
+    <a href="{% url 'home' %}" class="menu-toggle-link">Cancel</a>
+
+</div>
+
+<!-- Razorpay Checkout Script -->
+<script src="https://checkout.razorpay.com/v1/checkout.js"></script>
+
+<script>
+     // Razorpay payment handling
+ document.getElementById('pay-btn').onclick = function () {
+    var order_id = this.getAttribute('data-order-id');
+
+    var options = {
+        "key": "{{razorpay_key}}",  // Razorpay Key ID
+        "order_id": order_id,  // Order ID generated from backend
+        "handler": function (response) {
+            // Handle successful payment here
+            
+
+            // Redirect or trigger API call to complete the order
+            window.location.href = "/zaikaa/payment-success/?payment_id=" + response.razorpay_payment_id + "&order_id=" + order_id;
+        }
+    };
+
+    var rzp1 = new Razorpay(options);
+    rzp1.open();
+};
+</script>
+</body>
+</html>

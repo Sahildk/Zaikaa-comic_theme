@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bookings</title>
+    <link rel="stylesheet" type="text/css" href="{% static 'css/bookings.css' %}" />
+    <link rel="icon" href="{% static 'img/ecell-logo.png'%}" type="image/png">
+
+</head>
+<body>
+
+    <h1>Approved Orders</h1>
+    <a href="{% url 'toggle_menu' %}" class="menu-toggle-link">Toggle Menu Items</a>
+    <a href="{% url 'stall_history' %}" class="menu-toggle-link">Delivered Orders</a>
+
+    <div class="container">
+        <!-- Orders Waiting to be Completed -->
+        <h2>Orders Waiting to be Completed</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th>Token ID</th>
+                    <th>Item Name</th>
+                    <th>Quantity</th>
+                    <th>Customer Name</th>
+                    <th>Order Date & Time</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for order in orders %}
+                    {% if order.6 == 'Approved' %}
+                        <tr>
+                            <td>{{ order.0 }}</td>
+                            <td>{{ order.2 }}</td>
+                            <td>{{ order.3 }}</td>
+                            <td>{{ order.4 }}</td>
+                            <td>{% if order.7 %}{{ order.7|date:"D M d, Y H:i" }}{% else %}No Timestamp{% endif %}</td>
+                            <td>
+                                <a href="{% url 'update_order_status' order_id=order.1 status='completed' %}" class="status-link">Mark as Completed</a>
+                            </td>
+                        </tr>
+                    {% endif %}
+                {% empty %}
+                    <tr>
+                        <td colspan="6">No pending orders to complete.</td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+
+        <!-- Orders Waiting to be Delivered -->
+        <h2>Orders Waiting to be Delivered</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th>Token ID</th>
+                    <th>Item Name</th>
+                    <th>Quantity</th>
+                    <th>Customer Name</th>
+                    <th>Order Date & Time</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for order in orders %}
+                    {% if order.6 == 'Completed' %}
+                        <tr>
+                            <td>{{ order.0 }}</td>
+                            <td>{{ order.2 }}</td>
+                            <td>{{ order.3 }}</td>
+                            <td>{{ order.4 }}</td>
+                            <td>{% if order.7 %}{{ order.7|date:"D M d, Y H:i" }}{% else %}No Timestamp{% endif %}</td>
+                            <td>
+                                <a href="{% url 'update_order_status' order_id=order.1 status='delivered' %}" class="status-link">Mark as Delivered</a>
+                            </td>
+                        </tr>
+                    {% endif %}
+                {% empty %}
+                    <tr>
+                        <td colspan="6">No pending orders for delivery.</td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+
+</body>
+</html>

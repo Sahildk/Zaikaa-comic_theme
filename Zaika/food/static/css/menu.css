@@ -1,0 +1,157 @@
+/* Comic Theme Menu CSS */
+@import url('https://fonts.googleapis.com/css2?family=Bangers&family=Comic+Neue:wght@400;700&display=swap');
+
+:root {
+  --comic-yellow: #FFD700;
+  --comic-red: #FF4136;
+  --comic-blue: #007BFF;
+  --comic-white: #FFFFFF;
+  --comic-black: #000000;
+  --comic-border: 3px solid #000000;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Comic Neue', cursive;
+    background-color: var(--comic-yellow);
+    background-image: radial-gradient(#00000022 2px, transparent 2px);
+    background-size: 20px 20px;
+    padding: 20px;
+    color: black;
+    margin: 0;
+}
+
+.container {
+    max-width: 1000px;
+    margin: 30px auto;
+    background-color: #fff;
+    padding: 30px;
+    border: var(--comic-border);
+    box-shadow: 10px 10px 0px black;
+    border-radius: 0;
+}
+
+h1 {
+    text-align: center;
+    color: black;
+    font-family: 'Bangers', cursive;
+    font-size: 3rem;
+    text-transform: uppercase;
+    text-shadow: 3px 3px 0px var(--comic-red);
+    margin-bottom: 30px;
+}
+
+.buttons {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    margin-bottom: 30px;
+    flex-wrap: wrap;
+}
+
+.buttons button, .shop-items button, form button {
+    background-color: var(--comic-red);
+    color: white;
+    padding: 10px 20px;
+    border: 3px solid black;
+    border-radius: 0;
+    cursor: pointer;
+    font-family: 'Bangers', cursive;
+    font-size: 1.2rem;
+    box-shadow: 4px 4px 0px black;
+    transition: all 0.2s;
+    text-transform: uppercase;
+}
+
+.buttons button:hover, .shop-items button:hover, form button:hover {
+    transform: translate(2px, 2px);
+    box-shadow: 2px 2px 0px black;
+    background-color: var(--comic-yellow);
+    color: black;
+}
+
+.shop {
+    margin-bottom: 30px;
+    border: 3px solid black;
+    padding: 20px;
+    background: #f9f9f9;
+    box-shadow: 5px 5px 0px #ccc;
+}
+
+.shop h3 {
+    margin-bottom: 15px;
+    color: black;
+    font-family: 'Bangers', cursive;
+    font-size: 1.8rem;
+    border-bottom: 2px solid black;
+    padding-bottom: 5px;
+}
+
+.shop-items {
+    margin-left: 0;
+}
+
+.shop-items p {
+    color: black;
+    font-weight: bold;
+    font-size: 1.1rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px;
+    border-bottom: 1px dashed black;
+    gap: 15px;
+}
+
+.shop-items button {
+    font-size: 1rem;
+    padding: 5px 15px;
+}
+
+.menu-toggle-link {
+    display: block;
+    width: fit-content;
+    margin: 20px auto;
+    padding: 15px 30px;
+    background-color: var(--comic-blue);
+    color: white;
+    text-decoration: none;
+    border: 3px solid black;
+    font-family: 'Bangers', cursive;
+    font-size: 1.5rem;
+    box-shadow: 5px 5px 0px black;
+    text-align: center;
+}
+
+.menu-toggle-link:hover {
+    transform: translate(2px, 2px);
+    box-shadow: 2px 2px 0px black;
+    background-color: var(--comic-yellow);
+    color: black;
+}
+
+@media (max-width: 600px) {
+    .container {
+        padding: 15px;
+        width: 100%;
+        margin: 10px auto;
+    }
+
+    h1 {
+        font-size: 2.5rem;
+    }
+
+    .shop-items p {
+        flex-direction: column;
+        align-items: flex-start;
+        text-align: left;
+    }
+    
+    .shop-items button {
+        width: 100%;
+        margin-top: 5px;
+    }
+}

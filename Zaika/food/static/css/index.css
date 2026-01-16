@@ -1,0 +1,254 @@
+/* Comic Theme Index CSS */
+@import url('https://fonts.googleapis.com/css2?family=Bangers&family=Comic+Neue:wght@400;700&display=swap');
+
+:root {
+  --comic-yellow: #FFD700;
+  --comic-blue: #3d9afcb6; /* Using the one from user preference if any, essentially sky blue */
+  --comic-blue-solid: #007BFF;
+  --comic-red: #FF4136;
+  --comic-white: #FFFFFF;
+  --comic-black: #000000;
+  --comic-border: 3px solid #000000;
+  --comic-shadow: 4px 4px 0px 0px #000000;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Comic Neue', cursive;
+  background-color: var(--comic-white);
+  background-image: radial-gradient(#00000022 2px, transparent 2px);
+  background-size: 20px 20px;
+  color: var(--comic-black);
+  min-height: 100vh;
+}
+
+.body-bg {
+    display: none; /* Hide original background image */
+}
+
+#main {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+  position: relative;
+  z-index: 2;
+}
+
+/* Navbar */
+.nav {
+  background: var(--comic-yellow);
+  border-bottom: var(--comic-border);
+  padding: 15px 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  box-shadow: var(--comic-shadow);
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+
+.items-left {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+
+.items-left img {
+  height: 60px;
+  filter: drop-shadow(2px 2px 0px #000);
+}
+
+.items-left h1 {
+  font-family: 'Bangers', cursive;
+  font-size: 3rem;
+  color: var(--comic-black);
+  text-transform: uppercase;
+  text-shadow: 2px 2px 0px #fff;
+  letter-spacing: 2px;
+  margin: 0;
+}
+
+/* Hero Section */
+.hero {
+  text-align: center;
+  padding: 60px 40px;
+  background: white;
+  border: var(--comic-border);
+  box-shadow: var(--comic-shadow);
+  margin: 40px auto;
+  max-width: 900px;
+  border-radius: 0; /* Comic style usually sharp */
+  position: relative;
+}
+
+/* Speech bubble tail effect for hero maybe? or just standard comic box */
+
+.hero-content h2 {
+    font-family: 'Bangers', cursive;
+    font-size: 4rem;
+    line-height: 1.1;
+    margin-bottom: 20px;
+    text-transform: uppercase;
+    color: var(--comic-black);
+    text-shadow: 3px 3px 0px var(--comic-yellow);
+}
+
+.hero-content h2 span {
+    color: var(--comic-red);
+    text-shadow: 3px 3px 0px #000;
+    -webkit-text-stroke: 1px white;
+    display: block;
+}
+
+.hero-content p {
+    font-size: 1.4rem;
+    font-weight: 700;
+    margin: 0 auto 30px;
+    background: var(--comic-blue-solid);
+    color: white;
+    display: inline-block;
+    padding: 10px 20px;
+    transform: rotate(-1deg);
+    border: 3px solid black;
+    box-shadow: 4px 4px 0px black;
+    max-width: 80%;
+}
+
+.hero-content h3 {
+    font-family: 'Bangers', cursive;
+    font-size: 1.8rem;
+    margin-bottom: 15px;
+}
+
+.bubble-button {
+    font-family: 'Bangers', cursive;
+    font-size: 2.2rem;
+    background: var(--comic-red);
+    color: white;
+    padding: 15px 60px;
+    text-decoration: none;
+    border: var(--comic-border);
+    box-shadow: var(--comic-shadow);
+    display: inline-block;
+    transition: all 0.2s;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    border-radius: 50px; /* Bubble shape */
+}
+
+.bubble-button:hover {
+    transform: translate(2px, 2px);
+    box-shadow: 2px 2px 0px 0px #000;
+    background: var(--comic-yellow);
+    color: black;
+}
+
+.hero-part2 {
+    background: var(--comic-yellow);
+    border: var(--comic-border);
+    box-shadow: var(--comic-shadow);
+    padding: 30px;
+    margin-top: 50px;
+    transform: rotate(1deg);
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.hero-part2 h2 {
+    font-family: 'Bangers', cursive;
+    font-size: 2.8rem;
+    color: var(--comic-red);
+    text-shadow: 2px 2px 0 #000;
+}
+
+.hero-part2 h3 {
+    font-weight: bold;
+    font-size: 1.2rem;
+}
+.hero-part2 h4 span {
+    color: var(--comic-red);
+    font-weight: 900;
+    font-style: italic;
+    background: white;
+    padding: 0 5px;
+    border: 1px solid black;
+}
+
+/* Highlights */
+.highlights {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 30px;
+    padding: 50px 0;
+}
+
+.card {
+    background: white;
+    border: var(--comic-border);
+    box-shadow: var(--comic-shadow);
+    padding: 25px;
+    transition: transform 0.2s;
+    position: relative;
+}
+
+.card:hover {
+    transform: translate(-5px, -5px);
+    box-shadow: 8px 8px 0px 0px #000;
+}
+
+.card h3 {
+    font-family: 'Bangers', cursive;
+    font-size: 2rem;
+    color: var(--comic-blue-solid);
+    border-bottom: 3px solid black;
+    padding-bottom: 10px;
+    margin-bottom: 15px;
+    text-transform: uppercase;
+}
+
+.card p {
+    font-size: 1.1rem;
+    font-weight: 600;
+}
+
+/* Footer */
+.footer {
+    background: var(--comic-black);
+    color: white;
+    padding: 40px;
+    text-align: center;
+    border-top: 5px solid var(--comic-yellow);
+    font-weight: bold;
+    font-family: 'Comic Neue', cursive;
+}
+
+.footer-content {
+    max-width: 800px;
+    margin: auto;
+}
+
+.social-media {
+    margin: 20px 0;
+}
+
+.social-media a {
+    color: var(--comic-yellow);
+    font-size: 1.8rem;
+    margin: 0 15px;
+    transition: color 0.3s;
+}
+.social-media a:hover {
+    color: var(--comic-red);
+}
+
+.contact p {
+    margin: 5px 0;
+    font-size: 1.1rem;
+}

@@ -1,0 +1,185 @@
+/* Comic Theme Admin Approval CSS */
+@import url('https://fonts.googleapis.com/css2?family=Bangers&family=Comic+Neue:wght@400;700&display=swap');
+
+:root {
+  --comic-yellow: #FFD700;
+  --comic-red: #FF4136;
+  --comic-blue: #3d9afcb6;
+  --comic-green: #2ECC40;
+  --comic-blue-solid: #007BFF;
+  --comic-white: #FFFFFF;
+  --comic-black: #000000;
+  --comic-border: 3px solid #000000;
+  --comic-shadow: 4px 4px 0px 0px #000000;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Comic Neue', cursive;
+    background-color: var(--comic-white);
+    background-image: radial-gradient(#00000022 2px, transparent 2px);
+    background-size: 20px 20px;
+    margin: 0;
+    padding: 20px;
+    color: black;
+}
+
+.container {
+    padding: 30px;
+    margin: 30px auto;
+    max-width: 1100px;
+    background-color: #ffffff;
+    border: var(--comic-border);
+    box-shadow: 10px 10px 0px black;
+    border-radius: 0;
+}
+
+h1 {
+    text-align: center;
+    font-size: 2.5rem;
+    color: var(--comic-black);
+    margin-bottom: 30px;
+    text-transform: uppercase;
+    font-family: 'Bangers', cursive;
+    text-shadow: 3px 3px 0px var(--comic-yellow);
+}
+
+/* Table Styles */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 25px;
+    border: 3px solid black;
+    box-shadow: 5px 5px 0px black;
+}
+
+th, td {
+    padding: 15px;
+    text-align: left;
+    font-size: 1.1rem;
+    border: 2px solid black;
+    font-weight: bold;
+}
+
+th {
+    background-color: var(--comic-yellow);
+    color: black;
+    text-transform: uppercase;
+    font-family: 'Bangers', cursive;
+    font-size: 1.3rem;
+}
+
+td {
+    background-color: white;
+}
+
+tr:nth-child(even) td {
+    background-color: #f9f9f9;
+}
+
+tr:hover td {
+    background-color: #e3f2fd;
+}
+
+td[colspan="7"] {
+    text-align: center;
+    font-style: italic;
+    background-color: #f0f0f0;
+}
+
+/* Buttons */
+.btn-approve {
+    padding: 8px 15px;
+    background-color: var(--comic-green);
+    color: black;
+    border: 2px solid black;
+    cursor: pointer;
+    border-radius: 0;
+    font-size: 1rem;
+    text-transform: uppercase;
+    font-family: 'Bangers', cursive;
+    box-shadow: 3px 3px 0px black;
+    transition: all 0.2s;
+}
+
+.btn-approve:hover {
+    background-color: #45a049;
+    transform: translate(1px, 1px);
+    box-shadow: 1px 1px 0px black;
+}
+
+
+.btn-remove {
+    padding: 8px 15px;
+    background-color: var(--comic-red);
+    color: white;
+    border: 2px solid black;
+    cursor: pointer;
+    border-radius: 0;
+    font-size: 1rem;
+    text-transform: uppercase;
+    font-family: 'Bangers', cursive;
+    box-shadow: 3px 3px 0px black;
+    transition: all 0.2s;
+}
+
+.btn-remove:hover {
+    background-color: #a02934;
+    transform: translate(1px, 1px);
+    box-shadow: 1px 1px 0px black;
+}
+
+.btn-admin-panel {
+    padding: 15px 30px;
+    background-color: var(--comic-blue-solid);
+    color: white;
+    border: 3px solid black;
+    cursor: pointer;
+    font-size: 1.5rem;
+    border-radius: 0;
+    text-transform: uppercase;
+    font-family: 'Bangers', cursive;
+    box-shadow: 5px 5px 0px black;
+    margin-bottom: 20px;
+    display: block;
+    width: 100%;
+    text-align: center;
+    transition: all 0.2s;
+}
+
+.btn-admin-panel:hover {
+    background-color: var(--comic-yellow);
+    color: black;
+    transform: translate(2px, 2px);
+    box-shadow: 2px 2px 0px black;
+}
+
+a {
+    text-decoration: none;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .container {
+        padding: 15px;
+        margin: 10px auto;
+        width: 95%;
+        overflow-x: auto; /* Enable horizontal scroll for table */
+    }
+
+    table {
+        min-width: 600px; /* Ensure table doesn't squish too much */
+    }
+
+    h1 {
+        font-size: 2rem;
+    }
+
+    th, td {
+        padding: 10px;
+        font-size: 1rem;
+    }
+}

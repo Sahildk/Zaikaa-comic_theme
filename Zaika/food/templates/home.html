@@ -1,0 +1,236 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home - Zaikaa</title>
+    <link rel="stylesheet" type="text/css" href="{% static 'css/home.css' %}" />
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@4.2.0/fonts/remixicon.css" rel="stylesheet"/>
+    <!-- Set the favicon using a PNG file -->
+    <link rel="icon" href="{% static 'img/ecell-logo.png'%}" type="image/png">
+    <!-- <script src="{% static 'js/home.js' %}" defer></script> -->
+
+</head>
+<body>
+      <!-- Popup Message -->
+<div id="popup-message" class="popup liquid-button">
+    <p>Please select at least one item before confirming your order.</p>
+    <button id="close-popup">OK</button>
+</div>
+
+    <div class="transition">
+        <div class="transition-row row-1">
+          <div class="block revealtext1"><img src="{% static 'img/FF_logo.png' %}" alt="ff_logo"></div>
+        </div>
+        <div class="transition-row row-2">
+            <div class="block revealtext2">Food Fiesta</div>
+        </div>
+    </div>  
+
+    <nav>
+        <img src="{% static 'img/ecell-logo.png' %}" alt="ECell Logo" width="100" height="50">
+        <h2>Zaikaa</h2>
+        <div class="nav-part2">
+          <details>
+            <summary>
+              <i class="ri-menu-fold-line"></i>
+            </summary>
+            <ul>
+              <li><i class="ri-restaurant-line"><a href="{% url 'home' %}">Menu Page</a></i></li>
+              <li><i class="ri-shopping-bag-2-line"><a class="nav-link" href="{% url 'past_orders_page'%}">Past Orders</a></i></li>
+              <li><i class="ri-logout-box-r-line"><a class="nav-link" href="{% url 'ulogout'%}">Logout</a></i></li>
+
+            </ul>
+          </details>
+        </div>
+      </nav>
+      <div class="shop-container">
+        <h1>Choose Your Items</h1>
+    
+        <form method="POST">
+            {% csrf_token %}
+             <div class="shops">
+                {% for shop_name, shop_info in shops.items %}
+                    <div class="shop-item">
+                        <h3 class="shop-name">
+                            {{ shop_name }}
+                            <span class="arrow ri-arrow-down-s-line"></span>
+                        </h3>
+                        <ul class="menu">
+                            {% for item in shop_info.items %}
+                                <li>
+                                    <label>
+                                        <input type="checkbox" name="selected_items" value='{"item_id": {{ item.item_id }}, "item_name": "{{ item.item_name }}", "price": "{{ item.price }}", "availability": "{{ item.availability }}", "shop_id": {{ item.shop_id }} }'>
+                                        {{ item.item_name }}  <div>₹{{ item.price }}</div>
+                                    </label>
+                                </li>
+                            {% endfor %}
+                        </ul>
+                    </div>
+                {% endfor %}
+            </div>
+    
+            <div class="user-info" style="display: none;">
+                <label for="email">Email:</label>
+                <input type="email" id="email" name="email" value="{{ user_email }}" required><br><br>
+    
+                <label for="name">Name:</label>
+                <input type="text" id="name" name="name" value="{{ user_name }}" required><br><br>
+    
+                <label for="phone">Phone Number</label>
+                <input type="text" name="phone" value="{{ user_phone|default:'' }}" required>
+            </div>
+    
+            <button class="liquid-button" type="submit">Confirm Order</button>
+        </form>
+    </div>
+    
+
+          
+<footer class="footer">
+        <div class="footer-content">
+            <p>&copy; 2025 ECell. All rights reserved.</p>
+            
+            <div class="social-media">
+                
+                <a href="https://x.com/ecellsakec?s=21" target="_blank"><i class="ri-twitter-fill"></i></a> |  
+                <a href="https://www.instagram.com/ecellsakec?igsh=MWhtZDBnZ2R1MHhiMQ==" target="_blank"><i class="ri-instagram-fill"></i></a> |  
+                <a href="https://www.linkedin.com/company/entrepreneurship-and-innovationcell/posts/?feedView=all" target="_blank"><i class="ri-linkedin-box-fill"></i></a>
+            </div>
+    
+            <div class="contact">
+                <p><strong>Contact Us:</strong></p>
+                <p>Krishi Prasad  - 8591162728</p>
+                <p>Siddhesh kadam - 9321786781</p>
+            </div>
+        </div>
+    </footer>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.7.0/gsap.min.js"></script>
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+    const ease = "power4.inOut";
+
+        // Page Load Animation (Hides Loader after Animation)
+        revealTransition().then(() => {
+            gsap.set(".block", { visibility: "hidden" });
+        });
+
+        // Click Navigation Animation
+        // Click Navigation Animation
+        document.querySelectorAll("a").forEach((link) => {
+            link.addEventListener("click", (event) => {
+                const href = link.getAttribute("href");
+
+                if (href && !href.startsWith("#") && href !== window.location.pathname) {
+                    event.preventDefault();
+                    animateTransition().then(() => {
+                        window.location.href = href;
+                    });
+                }
+            });
+        });
+
+        // Reveal Animation (Runs on Page Load)
+        function revealTransition() {
+            return new Promise((resolve) => {
+                gsap.to(".block", { scaleY: 1 });
+                gsap.to(".block", {
+                    scaleY: 0,
+                    duration: 1.5,
+                    ease: ease,
+                    onComplete: resolve
+                });
+            });
+        }
+
+        // Animate Loader when Navigating to a Different Page
+        function animateTransition() {
+            return new Promise((resolve) => {
+                gsap.set(".block", { visibility: "visible", scaleY: 0 });
+                gsap.to(".block", {
+                    scaleY: 1,
+                    duration: 1.5,
+                    ease: ease,
+                    onComplete: resolve
+                });
+            });
+        }
+
+  // Page load animations
+  gsap.fromTo('.shop-container', { opacity: 0, y: 20 }, { opacity: 1, y: 0, duration: 0.5, delay:1 });
+  gsap.fromTo('nav', { y: -10 }, { opacity: 1, y: 0, duration: 0.5, delay:1 });
+
+  // Animate shop items when the page loads
+  gsap.fromTo('.shop-item', { opacity: 0, y: 20 }, { opacity: 1, y: 0, stagger: 0.2, duration: 0.5, delay:1 });
+
+  // Stagger effect for shop names when page loads
+  gsap.fromTo('.shop-name', { opacity: 0, y: -20 }, { opacity: 1, y: 0, stagger: 0.2, duration: 0.5 , delay:1});
+
+  // Checkbox toggle functionality
+  document.querySelectorAll(".shops li").forEach(item => {
+    item.addEventListener("click", function () {
+      const checkbox = this.querySelector("input[type='checkbox']");
+      checkbox.checked = !checkbox.checked;
+      this.classList.toggle("selected", checkbox.checked);
+    });
+  });
+
+  // Shop name click to show/hide menu with GSAP animation
+  document.querySelectorAll('.shop-name').forEach(function(shopName) {
+    shopName.addEventListener('click', function() {
+      const arrow = shopName.querySelector('.arrow');
+      const menu = shopName.nextElementSibling; // Corresponding <ul> element
+
+      menu.classList.toggle('show');
+      
+      if (menu.classList.contains('show')) {
+        gsap.fromTo(menu.querySelectorAll('li'), { opacity: 0, y: -20 }, { opacity: 1, y: 0, stagger: 0.1 });
+        arrow.style.transform = 'rotate(180deg)';
+      } else {
+        gsap.to(menu.querySelectorAll('li'), { opacity: 0, y: -20, stagger: 0.1 });
+        arrow.style.transform = 'rotate(0deg)';
+      }
+    });
+  });
+
+  
+
+  // Handle Form Submission and Popup Validation
+  const form = document.querySelector("form");
+  const popup = document.getElementById("popup-message");
+  const closePopup = document.getElementById("close-popup");
+
+  form.addEventListener("submit", function(event) {
+    const selectedItems = document.querySelectorAll("input[name='selected_items']:checked");
+
+    if (selectedItems.length === 0) {
+      event.preventDefault(); // Prevent form submission
+
+      // Show popup message with GSAP animation
+      popup.style.display = "block";
+      gsap.fromTo(popup, { y: -100, opacity: 0 }, { y: -270, opacity: 1, duration: 0.5 });
+
+      return false; // Stop form submission
+    }else {
+            event.preventDefault(); // Prevent immediate submission
+            animateTransition().then(() => {
+                form.submit(); // Submit after animation
+            });
+        }
+  });
+
+  // Close the popup when the button is clicked
+  closePopup.addEventListener("click", function() {
+    gsap.to(popup, {y: -100, opacity: 0, duration: 0.5, onComplete: function() {
+      popup.style.display = "none";
+    }});
+  });
+});
+
+</script>
+
+</body>
+</html>

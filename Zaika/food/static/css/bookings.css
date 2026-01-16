@@ -1,0 +1,173 @@
+/* Comic Theme Bookings (Stall Dashboard) CSS */
+@import url('https://fonts.googleapis.com/css2?family=Bangers&family=Comic+Neue:wght@400;700&display=swap');
+
+:root {
+  --comic-yellow: #FFD700;
+  --comic-red: #FF4136;
+  --comic-blue: #3d9afcb6;
+  --comic-blue-solid: #007BFF;
+  --comic-white: #FFFFFF;
+  --comic-black: #000000;
+  --comic-border: 3px solid #000000;
+  --comic-shadow: 4px 4px 0px 0px #000000;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Comic Neue', cursive;
+    background-color: var(--comic-white);
+    background-image: radial-gradient(#00000022 2px, transparent 2px);
+    background-size: 20px 20px;
+    margin: 0;
+    padding: 20px;
+    color: black;
+}
+
+h1 {
+    text-align: center;
+    margin-bottom: 20px;
+    color: var(--comic-black);
+    font-size: 3rem;
+    font-family: 'Bangers', cursive;
+    text-transform: uppercase;
+    text-shadow: 3px 3px 0px var(--comic-yellow);
+}
+
+h2 {
+    text-align: center;
+    color: var(--comic-red);
+    font-family: 'Bangers', cursive;
+    font-size: 2rem;
+    margin-top: 30px;
+    text-shadow: 2px 2px 0px black;
+    letter-spacing: 1px;
+}
+
+.container {
+    padding: 30px;
+    margin: 20px auto;
+    max-width: 1200px;
+    width: 100%;
+    background-color: white;
+    border: var(--comic-border);
+    box-shadow: 10px 10px 0px black;
+    border-radius: 0;
+    overflow-x: auto;
+}
+
+/* Table Styling */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 20px 0;
+    background-color: #fff;
+    box-shadow: 5px 5px 0px black;
+    border: 3px solid black;
+    min-width: 700px; /* Prevent too much squishing */
+}
+
+th, td {
+    padding: 15px;
+    border: 2px solid black;
+    text-align: left;
+    font-size: 1.1rem;
+    font-weight: bold;
+}
+
+th {
+    background-color: var(--comic-red);
+    color: white;
+    text-transform: uppercase;
+    font-family: 'Bangers', cursive;
+    font-size: 1.3rem;
+    text-shadow: 2px 2px 0px black;
+}
+
+tr:nth-child(even) {
+    background-color: #f9f9f9;
+}
+
+tr:hover {
+    background-color: var(--comic-yellow);
+    transition: background-color 0.2s;
+}
+
+td[colspan="6"] {
+    text-align: center;
+    font-style: italic;
+    background-color: #f0f0f0;
+}
+
+/* Button & Link Styling */
+.status-link {
+    padding: 8px 15px;
+    background-color: var(--comic-blue-solid);
+    color: white;
+    text-decoration: none;
+    border: 2px solid black;
+    cursor: pointer;
+    font-size: 1rem;
+    font-family: 'Bangers', cursive;
+    text-transform: uppercase;
+    display: inline-block;
+    box-shadow: 3px 3px 0px black;
+    transition: all 0.2s;
+}
+
+.status-link:hover {
+    background-color: var(--comic-yellow);
+    color: black;
+    transform: translate(2px, 2px);
+    box-shadow: 1px 1px 0px black;
+}
+
+/* Navigation Buttons */
+.menu-toggle-link {
+    display: inline-block;
+    margin: 15px 10px;
+    padding: 12px 25px;
+    background-color: var(--comic-blue-solid);
+    color: white;
+    text-decoration: none;
+    border: 3px solid black;
+    font-family: 'Bangers', cursive;
+    font-size: 1.3rem;
+    text-transform: uppercase;
+    box-shadow: 4px 4px 0px black;
+    transition: all 0.2s;
+}
+
+.menu-toggle-link:hover {
+    background-color: var(--comic-red);
+    transform: translate(2px, 2px);
+    box-shadow: 2px 2px 0px black;
+}
+
+@media (max-width: 768px) {
+    .container {
+        padding: 15px;
+        width: 100%;
+        border: none;
+        box-shadow: none;
+        background: transparent;
+    }
+    
+    table {
+        min-width: 100%;
+        display: block; /* Different strategy for really small screens if needed, but horizontal scroll is safer for tables */
+        overflow-x: auto;
+    }
+    
+    h1 {
+        font-size: 2.2rem;
+    }
+    
+    .menu-toggle-link {
+        display: block;
+        text-align: center;
+        margin: 10px 0;
+    }
+}

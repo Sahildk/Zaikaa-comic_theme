@@ -1,0 +1,168 @@
+/* Comic Theme Login CSS */
+@import url('https://fonts.googleapis.com/css2?family=Bangers&family=Comic+Neue:wght@400;700&display=swap');
+
+:root {
+  --comic-yellow: #FFD700;
+  --comic-red: #FF4136;
+  --comic-blue: #007BFF;
+  --comic-white: #FFFFFF;
+  --comic-black: #000000;
+  --comic-border: 3px solid #000000;
+  --comic-shadow: 4px 4px 0px 0px #000000;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    padding: 20px; /* Prevent edge touching */
+    background: var(--comic-yellow);
+    background-image: radial-gradient(#00000022 2px, transparent 2px);
+    background-size: 20px 20px;
+    font-family: 'Comic Neue', cursive;
+    margin: 0;
+    position: relative;
+    overflow-x: hidden;
+}
+
+.ecell-logo {
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    width: 70px;
+    height: auto;
+    z-index: 10;
+}
+
+.container {
+    background: white;
+    padding: 3.5rem;
+    border: var(--comic-border);
+    box-shadow: 10px 10px 0px black;
+    width: 90%;
+    max-width: 400px;
+    text-align: center;
+    border-radius: 0; /* Sharp corners for comic feel */
+}
+
+.logo {
+    width: 100px;
+    height: 100px;
+    margin-bottom: 2rem;
+    border: 3px solid black;
+    border-radius: 50%;
+    box-shadow: 4px 4px 0px black;
+}
+
+.login-form {
+    display: flex;
+    flex-direction: column;
+}
+
+.input-group {
+    position: relative;
+    margin-bottom: 30px;
+}
+
+.input-group input {
+    width: 100%;
+    padding: 15px;
+    border: 2px solid black;
+    background: white;
+    color: black;
+    outline: none;
+    font-family: 'Comic Neue', cursive;
+    font-weight: bold;
+    font-size: 1.1rem;
+    box-shadow: 3px 3px 0px #ccc;
+    transition: all 0.2s;
+}
+
+.input-group input:focus {
+    box-shadow: 4px 4px 0px black;
+    background: #fffbe6;
+}
+
+.input-group label {
+    position: absolute;
+    top: 15px;
+    left: 15px;
+    transition: 0.2s ease-in-out;
+    color: #666;
+    font-weight: bold;
+    pointer-events: none;
+}
+
+.input-group input:focus + label, 
+.input-group input:valid + label {
+    top: -12px;
+    left: 10px;
+    font-size: 14px;
+    color: black;
+    background: var(--comic-yellow);
+    padding: 2px 10px;
+    border: 2px solid black;
+    font-weight: 900;
+}
+
+.btn {
+    padding: 15px;
+    background: var(--comic-red);
+    border: 3px solid black;
+    cursor: pointer;
+    font-size: 1.5rem;
+    color: white;
+    font-family: 'Bangers', cursive;
+    letter-spacing: 1px;
+    box-shadow: 5px 5px 0px black;
+    transition: 0.2s;
+    text-transform: uppercase;
+    margin-top: 10px;
+}
+
+.btn:hover {
+    transform: translate(2px, 2px);
+    box-shadow: 2px 2px 0px black;
+    background: var(--comic-yellow);
+    color: black;
+}
+
+.options {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 1.5rem;
+}
+
+.options a {
+    color: black;
+    text-decoration: none;
+    font-weight: bold;
+    border-bottom: 2px solid var(--comic-red);
+}
+
+.options a:hover {    background: var(--comic-yellow);
+}
+
+@media (max-width: 600px) {
+    .container {
+        padding: 2rem;
+        margin-top: 80px; /* Space for logo */
+        width: 95%;
+    }
+
+    .ecell-logo {
+        left: 50%;
+        transform: translateX(-50%);
+        top: 15px;
+        width: 80px;
+    }
+
+    .input-group input {
+        padding: 12px; 
+    }
+}

@@ -1,0 +1,45 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Stall Order History</title>
+    <link rel="stylesheet" type="text/css" href="{% static 'css/stall_history.css' %}" />
+    <link rel="icon" href="{% static 'img/ecell-logo.png'%}" type="image/png">
+
+</head>
+<body>
+
+    <div class="container">
+        <a href="{% url 'bookings' %}" class="menu-toggle-link">Back</a>
+
+        <h1>Delivered Orders</h1>
+        <table>
+            <thead>
+                <tr>
+                    <th>Token Number</th>
+                    <th>Timestamp</th>
+                    <th>Item Name</th>
+                    <th>Quantity</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for order in delivered_orders %}
+                    <tr>
+                        <td>{{ order.0 }}</td>
+                        <td>{{ order.1 }}</td>
+                        <td>{{ order.2 }}</td>
+                        <td>{{ order.3 }}</td>
+                    </tr>
+                {% empty %}
+                    <tr>
+                        <td colspan="4">No delivered orders found</td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+
+</body>
+</html>

@@ -1,0 +1,98 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Zaikaa</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/remixicon@4.2.0/fonts/remixicon.css"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" type="text/css" href="{% static 'css/index.css' %}" />
+    <link rel="icon" href="{% static 'img/ecell-logo.png'%}" type="image/png">
+
+  </head>
+  <body>
+    <img class="body-bg" src="{% static 'img/bg.png' %}" alt="">
+
+    <div class="nav">
+        <div class="items-left">
+          <img src="{% static 'img/ff_logo.png' %}" alt="Food fiesta" />
+          <h1>Food Fiesta</h1>
+        </div>
+      </div>
+      
+    <div id="main">
+      
+
+      <div class="hero">
+    <div class="hero-content">
+        <h2>It's not just Food, <br> <span>It's an Experience!</span></h2>
+        <p>
+            From sizzling street food to gourmet delights, experience a diverse menu
+            curated and served by our aspiring student chefs.
+        </p>
+        <h3>Order now on</h3>
+        <a href="{% url 'home' %}" class="btn bubble-button">Zaikaa</a>
+    </div>
+
+    <div class="hero-part2">
+        <h3>Step into the World of Flavours</h3>
+        <h2>Food Fiesta 2025</h2>
+        <h4>An <span>E-Cell</span> Exclusive Culinary Celebration</h4>
+    </div>
+</div>
+
+
+      <section class="highlights">
+        <div class="card">
+          <h3>💳 Hassle-Free Payments</h3>
+          <p>Order online and <strong>pay seamlessly</strong> with digital options.</p>
+      </div>
+        <div class="card">
+            <h3>🍽 Quality Food</h3>
+            <p>Enjoy delicious, <strong>hygienic, and freshly prepared food</strong> from our student-run stalls.</p>
+        </div>
+        <div class="card">
+            <h3>👨‍🍳 Culinary Creativity</h3>
+            <p>Watch our aspiring chefs bring <strong>innovation to the plate</strong> with fusion flavors and artistic presentations.</p>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="footer-content">
+            <p>&copy; 2025 ECell. All rights reserved.</p>
+            
+            <div class="social-media">
+                
+              <a href="https://x.com/ecellsakec?s=21" target="_blank"><i class="ri-twitter-fill"></i></a> |  
+              <a href="https://www.instagram.com/ecellsakec?igsh=MWhtZDBnZ2R1MHhiMQ==" target="_blank"><i class="ri-instagram-fill"></i></a> |  
+              <a href="https://www.linkedin.com/company/entrepreneurship-and-innovationcell/posts/?feedView=all" target="_blank"><i class="ri-linkedin-box-fill"></i></a>
+          </div>
+    
+            <div class="contact">
+                <p><strong>Contact Us:</strong></p>
+                <p>Krishi Prasad  - 8591162728</p>
+                <p>Siddhesh kadam - 9321786781</p>
+            </div>
+        </div>
+    </footer>
+
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"
+      integrity="sha512-7eHRwcbYkK4d9g/6tD/mhkf++eoTHwpNM9woBxtPUBWm67zeAfFC+HrdoE2GanKeocly/VxeLvIqwvCdk7qScg=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    ></script>
+
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"
+      integrity="sha512-onMTRKJBKz8M1TnqqDuGBlowlH0ohFzMXYRNebz+yOcc5TQr/zAKsthzhuv0hiyUKEiQEQXEynnXCvNTOk50dg=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    ></script>
+
+  </body>
+</html>

@@ -1,0 +1,130 @@
+/* Comic Theme Stall History CSS */
+@import url('https://fonts.googleapis.com/css2?family=Bangers&family=Comic+Neue:wght@400;700&display=swap');
+
+:root {
+  --comic-yellow: #FFD700;
+  --comic-red: #FF4136;
+  --comic-blue: #3d9afcb6;
+  --comic-blue-solid: #007BFF;
+  --comic-white: #FFFFFF;
+  --comic-black: #000000;
+  --comic-border: 3px solid #000000;
+  --comic-shadow: 4px 4px 0px 0px #000000;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Comic Neue', cursive;
+    background-color: var(--comic-white);
+    background-image: radial-gradient(#00000022 2px, transparent 2px);
+    background-size: 20px 20px;
+    margin: 0;
+    padding: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    min-height: 100vh;
+}
+
+.container {
+    width: 100%;
+    max-width: 1000px;
+    background: white;
+    padding: 30px;
+    border: var(--comic-border);
+    box-shadow: 10px 10px 0px black;
+    text-align: center;
+    margin-top: 50px;
+    border-radius: 0;
+    overflow-x: auto;
+}
+
+h1 {
+    margin-bottom: 25px;
+    font-size: 2.8rem;
+    color: var(--comic-black);
+    font-family: 'Bangers', cursive;
+    text-transform: uppercase;
+    text-shadow: 3px 3px 0px var(--comic-yellow);
+}
+
+/* Table styling */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+    background: #fff;
+    border: 3px solid black;
+    box-shadow: 5px 5px 0px black;
+    min-width: 600px;
+}
+
+thead {
+    background-color: var(--comic-blue-solid);
+    color: white;
+}
+
+th, td {
+    padding: 15px;
+    border: 2px solid black;
+    text-align: center;
+    font-size: 1.1rem;
+    font-weight: bold;
+}
+
+th {
+    font-family: 'Bangers', cursive;
+    font-size: 1.3rem;
+    text-transform: uppercase;
+}
+
+tbody tr:nth-child(even) {
+    background-color: #f9f9f9;
+}
+
+tbody tr:hover {
+    background-color: var(--comic-yellow);
+    transition: background-color 0.2s;
+}
+
+td[colspan="4"] {
+    font-size: 1.2rem;
+    color: #555;
+    font-style: italic;
+}
+
+.menu-toggle-link {
+    display: inline-block;
+    margin: 20px 0;
+    padding: 15px 30px;
+    background-color: var(--comic-blue-solid);
+    color: white;
+    text-decoration: none;
+    border: 3px solid black;
+    font-family: 'Bangers', cursive;
+    font-size: 1.5rem;
+    box-shadow: 5px 5px 0px black;
+    transition: all 0.2s;
+    text-transform: uppercase;
+}
+
+.menu-toggle-link:hover {
+    background-color: var(--comic-red);
+    transform: translate(2px, 2px);
+    box-shadow: 2px 2px 0px black;
+}
+
+@media (max-width: 768px) {
+    .container {
+        padding: 15px;
+        width: 100%;
+        margin-top: 20px;
+    }
+    
+    table {
+        min-width: 100%;
+    }
+}
