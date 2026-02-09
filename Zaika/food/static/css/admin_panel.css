@@ -41,6 +41,7 @@ h1 {
     color: var(--comic-black);
     font-family: 'Bangers', cursive;
     font-size: 3rem;
+    letter-spacing: 2px;
     text-transform: uppercase;
     text-shadow: 3px 3px 0px var(--comic-red);
     margin-bottom: 30px;
@@ -52,6 +53,15 @@ h1 {
     flex-wrap: wrap;
     gap: 20px;
     margin-bottom: 30px;
+}
+
+.buttons button {
+    width: 250px;       /* Fixed width for uniformity */
+    height: 60px;       /* Fixed height */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 !important; /* Override potential margin from other rules */
 }
 
 .buttons button, form button {

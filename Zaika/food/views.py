@@ -7,6 +7,7 @@ from django.views.decorators.csrf import csrf_protect
 from django.contrib import messages
 import json
 from datetime import datetime
+import os
 import logging
 import re
 from random import *
@@ -581,8 +582,8 @@ def update_order_status(request, order_id, status):
 
 
 # Dummy admin credentials
-ADMIN_EMAIL = "saiprasad.jamdar17561@sakec.ac.in"
-ADMIN_PASSWORD = "031004"
+ADMIN_EMAIL = os.environ.get("ADMIN_EMAIL")
+ADMIN_PASSWORD = os.environ.get("ADMIN_PASSWORD")
 
 def admin_login(request):
     if request.method == "POST":
