@@ -19,7 +19,7 @@ from django.contrib.auth.hashers import check_password
 from django.contrib.auth.hashers import make_password
 import pandas as pd
 from io import BytesIO
-from .mongo_utils import insert_order_mongo, update_order_status_mongo, update_order_token_mongo, remove_order_mongo, orders_collection
+
 
 # Home view to display all stalls and handle item selection
 
@@ -240,22 +240,7 @@ def settinguporder(request):
                                 order_id = cursor.fetchone()[0]
                                 print(f"Executed INSERT into orderlist table: User ID = {user_id}, Shop ID = {shop_id}, Item = {item_name_without_shop}, Quantity = {quantity}, Price = {price}, Total Price = {total_price}")
 
-                                # Insert into MongoDB
-                                order_data = {
-                                    "order_id": order_id,
-                                    "email": user_email,
-                                    "name": user_name,
-                                    "contact_no": mobile,
-                                    "shop_id": shop_id,
-                                    "item_name": item_name_without_shop,
-                                    "qty": quantity,
-                                    "total_amt": total_price,
-                                    "status": "Pending",
-                                    "tokenid": None,
-                                    "timestamp": timestamp,
-                                    "mode_of_payment": None
-                                }
-                                insert_order_mongo(order_data)
+
                             else:
                                 error_message = f"The item '{item_name_without_shop}' is unavailable at Shop ID {shop_id}. Please check availability or remove the item."
                                 raise Exception(error_message)
@@ -335,8 +320,7 @@ def check_order_status(request):
                     WHERE "email" = %s AND "status" = 'Approved' AND "tokenid" IS NULL;
                 """, [token_id, email])
 
-            # Update in MongoDB
-            update_order_token_mongo(email, token_id, datetime.now(), 'cash')
+
 
             return JsonResponse({
                 'status': 'success',
@@ -406,8 +390,7 @@ def approve_order(request, order_id):
             WHERE "order_id" = %s;
         """, [order_id])
     
-    # Update in MongoDB
-    update_order_status_mongo(order_id, 'Approved')
+
     
     return redirect('adminapproval')  # Redirect back to the admin approval page
 
@@ -422,8 +405,7 @@ def remove_order(request, order_id):
                 WHERE "order_id" = %s;
             """, [order_id])
 
-        # Remove from MongoDB
-        remove_order_mongo(order_id)
+
     
     return redirect('adminapproval')  # Redirect back to the admin approval page
 
@@ -599,8 +581,7 @@ def update_order_status(request, order_id, status):
             WHERE "order_id" = %s;
         """, [status.capitalize(), order_id])
 
-    # Update in MongoDB
-    update_order_status_mongo(order_id, status.capitalize())
+
 
     # Provide a success message
     # messages.success(request, f"Order {order_id} marked as {status.capitalize()}!")
@@ -880,22 +861,7 @@ def payment_success_view(request):
                                     """, [user_email, user_name, mobile, shop_id, item_name_without_shop, quantity, total_price, 'Pending'])
                                     order_id = cursor.fetchone()[0]
 
-                                    # Insert into MongoDB
-                                    order_data = {
-                                        "order_id": order_id,
-                                        "email": user_email,
-                                        "name": user_name,
-                                        "contact_no": mobile,
-                                        "shop_id": shop_id,
-                                        "item_name": item_name_without_shop,
-                                        "qty": quantity,
-                                        "total_amt": total_price,
-                                        "status": "Pending",
-                                        "tokenid": None,
-                                        "timestamp": None,  # Will be updated later
-                                        "mode_of_payment": None
-                                    }
-                                    insert_order_mongo(order_data)
+
                                     # logging.debug(f"Inserted order for {item_name_without_shop} at shop_id={shop_id}")
 
                             # ✅ **Fix: Generate token ID correctly**
@@ -912,8 +878,7 @@ def payment_success_view(request):
                                 """, [token_id, timestamp, user_email])
                                 # logging.debug("Updated orderlist with token ID and timestamp.")
 
-                                # Update in MongoDB
-                                update_order_token_mongo(user_email, token_id, timestamp, 'Online', current_status='Pending')
+
                                 # logging.debug("Updated orderlist with token ID and timestamp.")
 
                             # Update order status to 'Approved'
@@ -925,12 +890,7 @@ def payment_success_view(request):
                                 """, [user_email, token_id])
                                 # logging.debug("Updated orderlist status to 'Approved'.")
 
-                            # Update status in MongoDB as well (for the items that just got the token)
-                            if orders_collection is not None:
-                                orders_collection.update_many(
-                                    {"tokenid": token_id, "email": user_email},
-                                    {"$set": {"status": "Approved"}}
-                                )
+
 
                             # logging.debug("Transaction committed successfully.")
                             return redirect('success', token_id=token_id)
