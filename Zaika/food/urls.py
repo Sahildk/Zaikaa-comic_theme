@@ -1,5 +1,5 @@
 from django.urls import path
-from .views import  home , confirm_order, settinguporder, check_order_status, success, waiting, adminapproval, allorders, approve_order, payment_success_view, past_orders_page, past_orders, stall_login, bookings, update_order_status, admin_login, admin_panel , admin_logout, add_shop, delete_shop, shop_listing, toggle_availability, generate_order_id, ulogin, usignup, urnp, ulogout, toggle_menu, remove_order, stall_history, export_orders_to_excel
+from .views import  home , confirm_order, settinguporder, check_order_status, success, waiting, adminapproval, allorders, approve_order, payment_success_view, past_orders_page, past_orders, stall_login, bookings, update_order_status, admin_login, admin_panel , admin_logout, add_shop, delete_shop, shop_listing, toggle_availability, generate_order_id, ulogin, usignup, urnp, ulogout, toggle_menu, remove_order, stall_history, export_orders_to_excel, create_order, payment_success_billdesk, payment_failed_billdesk
 from django.conf.urls import handler404, handler500, handler403, handler400
 from .views import custom_404, custom_500, custom_403, custom_400  # Import custom error views
 # Custom error handlers
@@ -32,7 +32,6 @@ urlpatterns = [
     path('admin/shop_listing/', shop_listing, name='shop_listing'),
     path('admin/toggle_availability/<int:item_id>/', toggle_availability, name='toggle_availability'),
     path('pay_online/', generate_order_id, name='generate_order_id'),
-    path('payment-success/', payment_success_view, name='payment-success'),
     path("ulogin/",ulogin,name="ulogin"),
     path("usignup/",usignup,name="usignup"),
     path("ulogout/",ulogout,name="ulogout"),    
@@ -41,8 +40,8 @@ urlpatterns = [
     path('admin/remove_order/<int:order_id>/', remove_order, name='remove_order'),
     path('stall/stall_history/', stall_history, name='stall_history'),
     path("admin/export-orders/", export_orders_to_excel, name="export_orders"),
-
-
-    
+    path('create-order/', create_order, name='create_order'),
+    path('payment-success/', payment_success_billdesk, name='payment_success_billdesk'),
+    path('payment-failed/', payment_failed_billdesk, name='payment_failed_billdesk'),
 
 ]
